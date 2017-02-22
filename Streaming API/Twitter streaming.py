@@ -1,3 +1,5 @@
+#This script is inspired by SEAN DOLINAR's tutorial : http://stats.seandolinar.com/collecting-twitter-data-using-a-python-stream-listener/.
+
 import tweepy
 
 #stocker les accès API dans des variables
