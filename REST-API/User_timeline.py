@@ -1,3 +1,5 @@
+#The first part of this script is largely inspired by Yanofsky's script : https://gist.github.com/yanofsky
+
 import tweepy #https://github.com/tweepy/tweepy
 
 #Identifiants Twitter API. Plus d'infos : https://dev.twitter.com/oauth/overview
@@ -55,9 +57,9 @@ outtweets_df[0] = (outtweets_df[0] - dt.datetime(1970,1,1)).dt.total_seconds()
 #Renommer les colonnes 
 outtweets_df = outtweets_df.rename(columns = {0 : "timestamp_millis", 1 : "text"})
 
-#Si mon tweet n'a pas de date associée, virer la ligne en question
+#Garder uniquement les tweets qui sont datés
 outtweets_df = outtweets_df[outtweets_df["timestamp_millis"].notnull()]
 
 #Exporter au format csv pour exploitation
 #Le line_terminator "\r\n" permet d'éviter que les tweets avec des sauts de ligne soient considérés comme un nouvel enregistrement
-outtweets_df.to_csv(path_or_buf = "/Users/noulmi/Downloads/outtweets.csv", sep = ";", line_terminator = "\r\n", encoding = "utf-8", index = False)
+outtweets_df.to_csv(path_or_buf = "outtweets.csv", sep = ";", line_terminator = "\r\n", encoding = "utf-8", index = False)
